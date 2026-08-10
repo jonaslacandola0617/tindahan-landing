@@ -1,22 +1,84 @@
-/* Mobile-only sizing guard for the existing floating header. */
+/* Mobile viewport sizing guards for the existing landing-page composition. */
+html,
+body {
+  min-width: 0;
+  max-width: 100%;
+}
+
+main {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: clip;
+}
+
+@supports not (overflow: clip) {
+  main {
+    overflow-x: hidden;
+  }
+}
+
 @media (max-width: 860px) {
+  .site-header {
+    width: 100vw;
+    max-width: 100vw;
+  }
+
   .nav-shell {
-    width: auto;
+    width: calc(100vw - 24px);
     max-width: calc(100vw - 24px);
-    margin-inline: 12px;
+    margin-inline: auto;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 10px;
   }
 
+  .section-shell {
+    width: calc(100vw - 32px);
+    max-width: calc(100vw - 32px);
+    margin-inline: auto;
+  }
+
   .brand,
-  .nav-actions {
+  .nav-actions,
+  .hero,
+  .hero-copy,
+  .hero-visual,
+  .manifesto-grid,
+  .section-heading,
+  .feature-grid,
+  .receipt-story-grid,
+  .how-track,
+  .control-panel,
+  .faq,
+  .footer-grid,
+  .footer-bottom {
     min-width: 0;
+  }
+
+  .ticker,
+  .receipt-story,
+  .final-cta,
+  .site-footer {
+    width: 100%;
+    max-width: 100vw;
   }
 }
 
 @media (max-width: 600px) {
   .nav-shell {
+    width: calc(100vw - 20px);
     max-width: calc(100vw - 20px);
-    margin-inline: 10px;
+  }
+
+  .section-shell {
+    width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px);
+  }
+
+  .hero-copy,
+  .hero-actions,
+  .hero-proof,
+  .hero-visual {
+    width: 100%;
+    max-width: 100%;
   }
 }
