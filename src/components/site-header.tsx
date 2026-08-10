@@ -3,7 +3,11 @@
 import { useEffect, useState } from "react";
 import { Icon } from "./icon";
 
-export function SiteHeader({ appUrl }: { appUrl: string }) {
+type SiteHeaderProps = {
+  appUrl: string;
+};
+
+export function SiteHeader({ appUrl }: SiteHeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -24,7 +28,7 @@ export function SiteHeader({ appUrl }: { appUrl: string }) {
     <div className="scroll-progress" aria-hidden="true"><span style={{ width: `${progress}%` }}/></div>
     <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
       <div className="nav-shell">
-        <a className="brand" href="#top" aria-label="TINDAHAN home">
+        <a className="brand" href="#top" aria-label="Tindahan home">
           <span className="brand-glyph"><Icon name="store"/></span>
           <span>Tindahan</span>
         </a>
@@ -40,7 +44,7 @@ export function SiteHeader({ appUrl }: { appUrl: string }) {
         <div className="nav-actions">
           <a className="nav-signin" href={`${appUrl}/sign-in`}>Sign in</a>
           <a className="button button-small button-primary" href={`${appUrl}/register`}>
-            Try TINDAHAN <Icon name="arrow"/>
+            Try Tindahan <Icon name="arrow"/>
           </a>
           <button className="nav-toggle" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(value => !value)}>
             <Icon name={open ? "close" : "menu"}/>
