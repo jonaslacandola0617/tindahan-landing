@@ -473,10 +473,48 @@ summary:focus-visible {
     letter-spacing: -.06em;
   }
 
+  .hero-visual {
+    min-height: 440px;
+  }
+
+  .dashboard-window {
+    transform: translate(-50%, -50%) scale(.53);
+  }
+
+  .float-card {
+    min-width: 200px;
+  }
+
+  .float-receipt {
+    right: -11%;
+  }
+
+  .float-stock {
+    left: -10%;
+  }
+
   .manifesto h2,
   .section-heading h2,
   .control-copy h2 {
     font-size: 39px;
+  }
+
+  .receipt-demo {
+    min-height: 455px;
+  }
+
+  .receipt-camera-frame {
+    width: 310px;
+    height: 440px;
+  }
+
+  .real-receipt {
+    width: 220px;
+    min-height: 335px;
+  }
+
+  .scan-result-card {
+    min-width: 165px;
   }
 
   .receipt-copy h2 {
