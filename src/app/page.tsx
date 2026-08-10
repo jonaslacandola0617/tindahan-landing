@@ -1,302 +1,222 @@
-import { Icon } from "@/components/icon";
-import { MotionBoot, SiteHeader } from "@/components/site-header";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BoxIcon,
+  ChartIcon,
+  CheckIcon,
+  GlobeIcon,
+  ReceiptIcon,
+  ScanIcon,
+  ShieldIcon,
+  Sparkles,
+  StoreIcon,
+  UsersIcon,
+  ZapIcon,
+} from "@/components/icons";
+import { AmbientCursor, MobileNav, ScrollReveal } from "@/components/landing-client";
 
-const APP_URL = (process.env.APP_URL ?? "").replace(/\/+$/, "");
+const APP = (process.env.APP_URL?.trim() || "https://tindahan.vercel.app").replace(/\/+$/, "");
 
 const features = [
-  {
-    icon: "package" as const,
-    kicker: "Inventory",
-    title: "Know what you have before you run out.",
-    copy: "Track products, stock changes, low-stock items, categories, and barcodes without digging through a notebook.",
-    className: "feature-inventory",
-  },
-  {
-    icon: "bag" as const,
-    kicker: "Sales",
-    title: "Record a sale while the line keeps moving.",
-    copy: "Search or scan a product, check stock, and confirm the sale in a few clear steps.",
-    className: "feature-sales",
-  },
-  {
-    icon: "receipt" as const,
-    kicker: "Receipt intelligence",
-    title: "Let the receipt do most of the typing.",
-    copy: "Upload a supplier receipt and Tindahan prepares the items for review before anything touches your inventory.",
-    className: "feature-receipts",
-  },
-  {
-    icon: "chart" as const,
-    kicker: "Reports",
-    title: "See the answers, not a wall of numbers.",
-    copy: "Check sales, top products, stock movement, and what needs attention in language that is easy to act on.",
-    className: "feature-reports",
-  },
-  {
-    icon: "users" as const,
-    kicker: "Staff access",
-    title: "Give staff their own access, not your password.",
-    copy: "Owner and staff accounts stay separate, while store data stays inside the right store.",
-    className: "feature-staff",
-  },
-  {
-    icon: "globe" as const,
-    kicker: "English + Filipino",
-    title: "Use the language that feels natural.",
-    copy: "Switch between English and Filipino across the app without changing how the workflows work.",
-    className: "feature-language",
-  },
+  { icon: BoxIcon, eyebrow: "Inventory", title: "Know what you have. Know what needs attention.", copy: "Products, stock movements, low-stock visibility, and a history you can actually trace." },
+  { icon: ScanIcon, eyebrow: "Barcode", title: "Scan when it is faster than typing.", copy: "Record sales and find products with camera scanning, manual entry, or compatible scanners." },
+  { icon: ReceiptIcon, eyebrow: "Receipt Intelligence", title: "Turn supplier receipts into a reviewable stock proposal.", copy: "TINDAHAN reads the receipt, organizes the lines, remembers mappings, and waits for your approval." },
+  { icon: ChartIcon, eyebrow: "Reports", title: "See the store without building a spreadsheet first.", copy: "Sales, inventory movement, stock attention, and useful operational context in one place." },
+  { icon: UsersIcon, eyebrow: "Staff access", title: "Give the team what they need—without giving away everything.", copy: "Owner and staff roles keep store controls, daily work, and account access intentionally separated." },
+  { icon: GlobeIcon, eyebrow: "English + Filipino", title: "Made to feel closer to the people actually using it.", copy: "Switch between English and Filipino across the interface, including everyday workflows and settings." },
 ];
 
-export default function Home() {
-  return <>
-    <MotionBoot />
-    <SiteHeader appUrl={APP_URL} />
+export default function HomePage() {
+  return (
+    <main>
+      <AmbientCursor />
+      <ScrollReveal />
+      <div className="noise" aria-hidden="true" />
+      <div className="cursor-aura" aria-hidden="true" />
 
-    <main id="top">
-      <section className="hero section-shell" aria-labelledby="hero-title">
-        <div className="hero-ambient hero-ambient-one" aria-hidden="true"/>
-        <div className="hero-ambient hero-ambient-two" aria-hidden="true"/>
-        <div className="hero-grid" aria-hidden="true"/>
-
-        <div className="hero-copy">
-          <div className="eyebrow hero-eyebrow"><span className="eyebrow-dot"/> Store Operating Assistant · Para sa araw-araw na tindahan</div>
-          <h1 id="hero-title">Run the store.<br/><span>Tindahan keeps up.</span></h1>
-          <p className="hero-lede">Track stock, record sales, scan supplier receipts, and see what needs attention—without turning your store into a complicated system.</p>
-          <div className="hero-actions">
-            <a className="button button-primary button-large" href={`${APP_URL}/register`}>Try Tindahan <Icon name="arrow"/></a>
-            <a className="button button-ghost button-large" href="#how">See how it works</a>
+      <header className="nav-shell">
+        <nav className="nav container" aria-label="Primary navigation">
+          <a className="brand" href="#top" aria-label="TINDAHAN home">
+            <span className="brand-icon"><StoreIcon /></span>
+            <span>TINDAHAN</span>
+            <i>β</i>
+          </a>
+          <div className="nav-links">
+            <a href="#features">Features</a>
+            <a href="#receipt-intelligence">Receipt Intelligence</a>
+            <a href="#workflow">How it works</a>
+            <a href="#pilot">Pilot</a>
           </div>
-          <div className="hero-proof" aria-label="Product highlights">
-            <span><Icon name="check"/> No POS hardware required</span>
-            <span><Icon name="check"/> English + Filipino</span>
-            <span><Icon name="check"/> Human-approved receipt updates</span>
+          <div className="nav-actions">
+            <a className="text-link" href={`${APP}/sign-in`}>Sign in</a>
+            <a className="button button-small button-light" href={`${APP}/register`}>Try TINDAHAN <ArrowUpRight /></a>
           </div>
-        </div>
+          <MobileNav appUrl={APP} />
+        </nav>
+      </header>
 
-        <div className="hero-visual" aria-label="Tindahan product preview">
-          <div className="stage-orbit stage-orbit-one" aria-hidden="true"/>
-          <div className="stage-orbit stage-orbit-two" aria-hidden="true"/>
-          <div className="stage-spark stage-spark-one" aria-hidden="true"><Icon name="sparkle"/></div>
-          <div className="stage-spark stage-spark-two" aria-hidden="true"><Icon name="sparkle"/></div>
-
-          <div className="dashboard-window">
-            <div className="window-bar">
-              <div className="window-dots"><i/><i/><i/></div>
-              <span>Maria&apos;s Mini Mart</span>
-              <span className="window-live"><i/> Sample store</span>
+      <section className="hero" id="top">
+        <div className="hero-orb hero-orb-one" aria-hidden="true" />
+        <div className="hero-orb hero-orb-two" aria-hidden="true" />
+        <div className="container hero-grid">
+          <div className="hero-copy" data-reveal>
+            <div className="eyebrow-pill"><span className="live-dot" /> Built for the everyday Philippine store</div>
+            <h1>Run the store.<br/><span className="gradient-text">Not the paperwork.</span></h1>
+            <p className="hero-lede">TINDAHAN brings inventory, sales, receipts, reports, and staff access into one focused operating system—so the work around the store stops feeling scattered.</p>
+            <div className="hero-actions">
+              <a className="button button-primary" href={`${APP}/register`}>Start exploring <ArrowRight /></a>
+              <a className="button button-ghost" href="#receipt-intelligence"><Sparkles /> See receipt intelligence</a>
             </div>
-            <div className="dashboard-body">
-              <aside className="mock-sidebar">
-                <div className="mock-brand"><span><Icon name="store"/></span><b>Tindahan</b></div>
-                <div className="mock-nav is-active"><Icon name="chart"/><span>Dashboard</span></div>
-                <div className="mock-nav"><Icon name="package"/><span>Inventory</span></div>
-                <div className="mock-nav"><Icon name="bag"/><span>Sales</span></div>
-                <div className="mock-nav"><Icon name="receipt"/><span>Receipts</span></div>
-              </aside>
-              <div className="mock-content">
-                <div className="mock-heading"><div><small>Monday, August 10</small><strong>Good afternoon, Maria.</strong></div><button>+ Record sale</button></div>
-                <div className="mock-stat-grid">
-                  <div className="mock-stat"><span>Sales today</span><strong>₱4,280</strong><small>18 sales recorded</small></div>
-                  <div className="mock-stat attention"><span>Needs attention</span><strong>3 items</strong><small>Running low on stock</small></div>
-                </div>
-                <div className="mock-lower-grid">
-                  <div className="mock-panel">
-                    <div className="mock-panel-title"><strong>Today&apos;s sales</strong><span>View report</span></div>
-                    <div className="mini-bars" aria-hidden="true">
-                      <i style={{height:"34%"}}/><i style={{height:"52%"}}/><i style={{height:"43%"}}/><i style={{height:"68%"}}/><i style={{height:"58%"}}/><i style={{height:"82%"}}/><i style={{height:"74%"}}/><i style={{height:"92%"}}/>
+            <div className="trust-row">
+              <span><CheckIcon /> Human-reviewed stock updates</span>
+              <span><CheckIcon /> Private receipt storage</span>
+              <span><CheckIcon /> EN / FIL</span>
+            </div>
+          </div>
+
+          <div className="hero-stage" data-reveal aria-label="TINDAHAN product interface preview">
+            <div className="stage-ring ring-one"/><div className="stage-ring ring-two"/>
+            <div className="floating-chip chip-sales"><span className="mini-icon emerald"><ChartIcon /></span><span><b>Today&apos;s sales</b><strong>₱8,420</strong></span><em>+12%</em></div>
+            <div className="floating-chip chip-stock"><span className="mini-icon olive"><BoxIcon /></span><span><b>Low stock</b><strong>7 items</strong></span><em>Review</em></div>
+            <div className="app-window">
+              <div className="app-topbar"><div className="window-dots"><i/><i/><i/></div><div className="app-address">app.tindahan</div><span className="app-live"><i/> live</span></div>
+              <div className="app-frame">
+                <aside className="mock-sidebar">
+                  <div className="mock-brand"><span><StoreIcon /></span><b>Tindahan</b></div>
+                  <div className="mock-nav active"><span>⌂</span> Dashboard</div>
+                  <div className="mock-nav"><span>▣</span> Inventory</div>
+                  <div className="mock-nav"><span>◇</span> Sales</div>
+                  <div className="mock-nav"><span>⌑</span> Receipts</div>
+                  <div className="mock-nav"><span>↗</span> Reports</div>
+                  <div className="mock-spacer" />
+                  <div className="mock-nav"><span>⚙</span> Settings</div>
+                </aside>
+                <div className="mock-main">
+                  <div className="mock-heading"><div><small>MONDAY, AUGUST 10</small><h3>Good afternoon, Maria.</h3><p>Here&apos;s what&apos;s happening in your store.</p></div><button>+ Record sale</button></div>
+                  <div className="metric-grid">
+                    <div className="metric-card"><span>Sales today</span><strong>₱8,420</strong><small>42 transactions</small></div>
+                    <div className="metric-card"><span>Products</span><strong>684</strong><small>7 need attention</small></div>
+                    <div className="metric-card accent"><span>Receipt queue</span><strong>2</strong><small>Ready to review</small></div>
+                  </div>
+                  <div className="dashboard-grid">
+                    <div className="chart-card">
+                      <div className="card-title"><span>Sales this week</span><small>View report ↗</small></div>
+                      <div className="chart-bars">{[42,60,52,76,66,88,72].map((height,index)=><i key={index} style={{height:`${height}%`}}><span /></i>)}</div>
+                      <div className="chart-days"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
                     </div>
-                    <div className="bar-labels"><span>8 AM</span><span>12 PM</span><span>4 PM</span></div>
-                  </div>
-                  <div className="mock-panel stock-list">
-                    <div className="mock-panel-title"><strong>Low stock</strong><span>3 items</span></div>
-                    <div><i className="product-dot cola"/><span>Coke 1.5L<small>4 left</small></span><b>Low</b></div>
-                    <div><i className="product-dot sardines"/><span>Sardines<small>6 left</small></span><b>Low</b></div>
-                    <div><i className="product-dot coffee"/><span>3-in-1 Coffee<small>9 left</small></span><b>Watch</b></div>
+                    <div className="attention-card"><div className="card-title"><span>Needs attention</span><small>7 items</small></div><div className="attention-row"><i className="rice"/><span><b>Jasmine Rice 5kg</b><small>3 left in stock</small></span><em>Low</em></div><div className="attention-row"><i className="coffee"/><span><b>3-in-1 Coffee</b><small>8 sachets left</small></span><em>Low</em></div><div className="attention-row"><i className="soap"/><span><b>Bath Soap</b><small>12 pieces left</small></span><em>Watch</em></div></div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="float-card float-receipt">
-            <span className="float-icon receipt"><Icon name="receipt"/></span>
-            <div><small>Receipt scanned</small><strong>12 items ready to review</strong></div>
-            <span className="float-check"><Icon name="check"/></span>
-          </div>
-          <div className="float-card float-stock">
-            <span className="float-icon stock"><Icon name="package"/></span>
-            <div><small>Stock updated</small><strong>Coke 1.5L&nbsp; +12</strong></div>
-            <span className="float-time">now</span>
-          </div>
-        </div>
-      </section>
-
-      <div className="ticker" aria-label="Tindahan capabilities">
-        <div className="ticker-track">
-          {["INVENTORY","BENTA","RESIBO","BARCODE","REPORTS","LOW STOCK","STAFF","FILIPINO","INVENTORY","BENTA","RESIBO","BARCODE","REPORTS","LOW STOCK","STAFF","FILIPINO"].map((item, index) => <span key={`${item}-${index}`}><i/> {item}</span>)}
-        </div>
-      </div>
-
-      <section className="manifesto section-shell" data-reveal>
-        <div className="section-index">01 / WHY Tindahan</div>
-        <div className="manifesto-grid">
-          <h2>Built around the way a small store <em>actually moves.</em></h2>
-          <div className="manifesto-copy">
-            <p>Small stores already have enough going on. Customers are waiting, deliveries arrive, stock disappears faster than expected, and receipts pile up.</p>
-            <p>Tindahan keeps the important things in one place, then gets out of the way.</p>
-          </div>
-        </div>
-        <div className="paper-notes" aria-hidden="true">
-          <article className="paper-note note-one"><span>PAUBOS</span><strong>Coke 1.5L</strong><small>4 na lang</small><i/></article>
-          <article className="paper-note note-two"><span>BENTA TODAY</span><strong>₱4,280</strong><small>18 transactions</small><i/></article>
-          <article className="paper-note note-three"><span>DELIVERY</span><strong>12 items</strong><small>ready to check</small><i/></article>
-        </div>
-      </section>
-
-      <section className="features section-shell" id="features">
-        <div className="section-heading" data-reveal>
-          <div><div className="section-index">02 / WHAT IT DOES</div><h2>Everything you need.<br/><span>Nothing you don&apos;t.</span></h2></div>
-          <p>Each part of Tindahan is built around a normal store task, so the app feels familiar even if you are not used to business software.</p>
-        </div>
-
-        <div className="feature-grid">
-          {features.map((feature, index) => <article className={`feature-card ${feature.className}`} key={feature.kicker} data-reveal style={{"--delay": `${index * 60}ms`} as React.CSSProperties}>
-            <div className="feature-top"><span className="feature-icon"><Icon name={feature.icon}/></span><span className="feature-kicker">{feature.kicker}</span></div>
-            <h3>{feature.title}</h3>
-            <p>{feature.copy}</p>
-            {feature.kicker === "Inventory" && <div className="feature-visual inventory-visual" aria-hidden="true">
-              <div><span><i className="sku orange"/>Lucky Me Pancit Canton</span><b>28 pcs</b></div>
-              <div><span><i className="sku green"/>Coke 1.5L</span><b className="low-pill">4 left</b></div>
-              <div><span><i className="sku cream"/>Argentina Corned Beef</span><b>16 pcs</b></div>
-            </div>}
-            {feature.kicker === "Sales" && <div className="feature-visual sales-visual" aria-hidden="true">
-              <div className="sale-row"><span>2 × Coke 1.5L</span><b>₱150</b></div>
-              <div className="sale-row"><span>1 × Pancit Canton</span><b>₱16</b></div>
-              <div className="sale-total"><span>Total</span><b>₱166</b></div>
-              <div className="sale-confirm"><Icon name="check"/> Sale recorded</div>
-            </div>}
-            {feature.kicker === "Receipt intelligence" && <div className="feature-visual receipt-mini" aria-hidden="true">
-              <div className="receipt-mini-paper"><b>ABC WHOLESALE</b><i/><span>Coke 1.5L&nbsp;&nbsp; 12</span><span>Sardines&nbsp;&nbsp;&nbsp;&nbsp; 24</span><span>Coffee 3in1&nbsp;&nbsp; 30</span><i/><strong>TOTAL&nbsp;&nbsp; ₱2,840</strong><div className="scan-beam"/></div>
-              <div className="receipt-ready"><Icon name="sparkle"/><span><b>12 items found</b><small>Review before adding stock</small></span></div>
-            </div>}
-            {feature.kicker === "Reports" && <div className="feature-visual report-visual" aria-hidden="true">
-              <div className="report-number"><small>This week</small><strong>₱28,640</strong><span>Sales recorded</span></div>
-              <div className="report-bars"><i/><i/><i/><i/><i/><i/><i/></div>
-            </div>}
-            {feature.kicker === "Staff access" && <div className="feature-visual people-visual" aria-hidden="true">
-              <div className="avatar owner">M</div><div className="people-copy"><b>Maria Santos</b><small>Owner</small></div><span>Full access</span>
-              <div className="avatar staff">J</div><div className="people-copy"><b>Jun Reyes</b><small>Staff</small></div><span>Store access</span>
-            </div>}
-            {feature.kicker === "English + Filipino" && <div className="feature-visual language-visual" aria-hidden="true">
-              <span className="lang active">EN</span><span className="switch-line"><i/></span><span className="lang">FIL</span>
-              <div><b>Low stock</b><small>Paubos na ang paninda</small></div>
-            </div>}
-          </article>)}
-        </div>
-      </section>
-
-      <section className="receipt-story" id="receipts">
-        <div className="receipt-story-glow" aria-hidden="true"/>
-        <div className="section-shell receipt-story-grid">
-          <div className="receipt-demo" data-reveal>
-            <div className="receipt-camera-frame"><span className="corner tl"/><span className="corner tr"/><span className="corner bl"/><span className="corner br"/>
-              <div className="real-receipt">
-                <div className="receipt-logo"><Icon name="store"/></div>
-                <b>ABC WHOLESALE CENTER</b><small>Angeles City, Pampanga</small><i/>
-                <span>COCA COLA 1.5L&nbsp;&nbsp;&nbsp;&nbsp; 12&nbsp;&nbsp; 900.00</span>
-                <span>ARGENTINA CORNED&nbsp;&nbsp;&nbsp;&nbsp;24&nbsp; 816.00</span>
-                <span>LUCKY ME PC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 30&nbsp; 450.00</span>
-                <span>NESCAFE 3IN1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 30&nbsp; 240.00</span>
-                <i/><strong>TOTAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ₱2,406.00</strong>
-                <div className="receipt-scan-line"/>
-              </div>
-            </div>
-            <div className="scan-result-card result-one"><span><Icon name="sparkle"/></span><div><small>Detected</small><b>ABC Wholesale Center</b></div></div>
-            <div className="scan-result-card result-two"><span><Icon name="check"/></span><div><small>Ready for review</small><b>4 product lines</b></div></div>
-          </div>
-
-          <div className="receipt-copy" data-reveal>
-            <div className="section-index light">03 / RECEIPT INTELLIGENCE</div>
-            <h2>Take a photo.<br/><span>Skip the typing.</span></h2>
-            <p className="receipt-lede">Tindahan reads supplier receipts and prepares a stock update for you. It never changes inventory behind your back.</p>
-            <div className="receipt-steps">
-              <div><b>01</b><span><strong>Scan or upload</strong><small>Use your phone camera or choose a receipt photo.</small></span></div>
-              <div><b>02</b><span><strong>Check what Tindahan found</strong><small>Fix quantities, match products, or leave out lines you do not need.</small></span></div>
-              <div><b>03</b><span><strong>You approve the update</strong><small>Stock changes only after you say everything looks right.</small></span></div>
-            </div>
-            <div className="human-control"><Icon name="shield"/><span><b>AI suggests. You decide.</b><small>Automation helps with the repetitive work without taking control away from the owner.</small></span></div>
-          </div>
-        </div>
-      </section>
-
-      <section className="how section-shell" id="how">
-        <div className="section-heading centered" data-reveal>
-          <div className="section-index">04 / HOW IT FITS YOUR DAY</div>
-          <h2>Simple enough for day one.<br/><span>Useful enough for every day after.</span></h2>
-        </div>
-        <div className="how-track" data-reveal>
-          <article><div className="how-number">01</div><div className="how-icon"><Icon name="store"/></div><h3>Set up your store</h3><p>Add the basics, choose your preferences, then start with products you already sell.</p><span className="how-caption">A few minutes to get oriented</span></article>
-          <div className="how-connector" aria-hidden="true"><i/></div>
-          <article><div className="how-number">02</div><div className="how-icon"><Icon name="bag"/></div><h3>Run the day</h3><p>Record sales, check stock, scan barcodes, and process deliveries as they happen.</p><span className="how-caption">Built around quick store tasks</span></article>
-          <div className="how-connector" aria-hidden="true"><i/></div>
-          <article><div className="how-number">03</div><div className="how-icon"><Icon name="chart"/></div><h3>Know what needs attention</h3><p>See low stock, sales activity, recent changes, and reports without doing the math yourself.</p><span className="how-caption">Clear answers, not dashboards for dashboards&apos; sake</span></article>
-        </div>
-      </section>
-
-      <section className="control section-shell" data-reveal>
-        <div className="control-panel">
-          <div className="control-art" aria-hidden="true">
-            <div className="control-ring ring-one"/><div className="control-ring ring-two"/><div className="control-ring ring-three"/>
-            <div className="control-core"><Icon name="shield"/><span>YOUR STORE</span><b>YOU&apos;RE IN CONTROL</b></div>
-            <div className="control-chip chip-private"><Icon name="receipt"/><span>Private receipts</span></div>
-            <div className="control-chip chip-history"><Icon name="package"/><span>Traceable stock</span></div>
-            <div className="control-chip chip-people"><Icon name="users"/><span>Separate staff access</span></div>
-          </div>
-          <div className="control-copy">
-            <div className="section-index">05 / BUILT TO BE TRUSTED</div>
-            <h2>Calm on the outside.<br/><span>Serious underneath.</span></h2>
-            <p>The app stays simple for the person using it, while the important things—store access, inventory history, receipt privacy, and repeated actions—are handled carefully behind the scenes.</p>
-            <div className="trust-list">
-              <span><Icon name="check"/> Inventory changes keep a history</span>
-              <span><Icon name="check"/> Receipt images stay private</span>
-              <span><Icon name="check"/> Staff use their own accounts</span>
-              <span><Icon name="check"/> Receipt suggestions need approval</span>
+            <div className="receipt-float">
+              <div className="receipt-paper"><div className="receipt-notch"/><b>SUPPLIER RECEIPT</b><span>Jasmine Rice 5kg&nbsp;&nbsp; 6</span><span>Coffee Sachet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 24</span><span>Bath Soap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12</span><hr/><strong>₱2,846.00</strong><div className="scan-line"/></div>
+              <div className="receipt-status"><span><Sparkles /></span><div><b>Receipt understood</b><small>3 lines ready to review</small></div></div>
             </div>
           </div>
         </div>
+        <div className="hero-marquee" aria-hidden="true"><div><span>INVENTORY</span><i>✦</i><span>SALES</span><i>✦</i><span>BARCODE SCANNING</span><i>✦</i><span>RECEIPT INTELLIGENCE</span><i>✦</i><span>REPORTS</span><i>✦</i><span>STAFF ACCESS</span><i>✦</i><span>INVENTORY</span><i>✦</i><span>SALES</span><i>✦</i><span>BARCODE SCANNING</span><i>✦</i><span>RECEIPT INTELLIGENCE</span><i>✦</i></div></div>
       </section>
 
-      <section className="faq section-shell" id="faq">
-        <div className="faq-intro" data-reveal><div className="section-index">06 / QUESTIONS</div><h2>Before you try it.</h2><p>No technical language. Just the things you probably want to know first.</p></div>
-        <div className="faq-list" data-reveal>
-          <details><summary>Is Tindahan a POS system?<span>+</span></summary><p>No. Tindahan is a lightweight store operating assistant. It helps with inventory, sales records, supplier receipts, reports, and everyday store tasks without trying to replace your whole business with a complex enterprise system.</p></details>
-          <details><summary>Do I need special barcode equipment?<span>+</span></summary><p>No. You can use compatible barcodes with a camera, a keyboard-style scanner, or enter products manually when needed.</p></details>
-          <details><summary>Will a scanned receipt change my stock automatically?<span>+</span></summary><p>No. Tindahan prepares a review first. You check the items and quantities, then approve the update yourself.</p></details>
-          <details><summary>Can my staff use the app too?<span>+</span></summary><p>Yes. Staff can have their own account and store access, so you do not need to share the owner password.</p></details>
-          <details><summary>Can I use Tindahan in Filipino?<span>+</span></summary><p>Yes. The interface can switch between English and Filipino.</p></details>
+      <section className="section problem-section">
+        <div className="container">
+          <div className="section-kicker"><span>01</span> LESS SCATTER. MORE CONTROL.</div>
+          <div className="problem-grid" data-reveal>
+            <h2>Small-store work is simple.<br/><em>The tools around it usually aren&apos;t.</em></h2>
+            <div className="problem-copy"><p>Stock in one notebook. Sales in another. Supplier receipts in a drawer. Product counts in someone&apos;s memory. TINDAHAN connects the everyday pieces without turning the store into an enterprise software project.</p><a href="#features">Explore the system <ArrowRight /></a></div>
+          </div>
+          <div className="chaos-board" data-reveal>
+            <div className="chaos-card notebook"><span className="chaos-label">Notebook</span><div className="scribble">Rice — 12<br/>Coffee — 24?<br/>Soap — <s>8</s> 10</div></div>
+            <div className="chaos-card calculator"><span className="chaos-label">Calculator</span><div className="calc-screen">8,420.00</div><div className="calc-keys">{Array.from({length:12}).map((_,i)=><i key={i}/>)}</div></div>
+            <div className="chaos-card paper"><span className="chaos-label">Receipt pile</span><ReceiptIcon /><strong>Supplier #2481</strong><small>What did we receive?</small></div>
+            <div className="merge-beam"><span>TINDAHAN</span><i/><i/><i/></div>
+            <div className="clarity-card"><div className="clarity-glow"/><span className="clarity-kicker">ONE STORE VIEW</span><strong>684 products</strong><div className="clarity-row"><span>Inventory status</span><b>7 need attention</b></div><div className="clarity-row"><span>Today&apos;s sales</span><b>₱8,420</b></div><div className="clarity-row"><span>Receipts</span><b>2 to review</b></div><div className="clarity-row"><span>Team</span><b>3 members</b></div></div>
+          </div>
         </div>
       </section>
 
-      <section className="final-cta">
-        <div className="final-shape shape-one" aria-hidden="true"/><div className="final-shape shape-two" aria-hidden="true"/><div className="final-shape shape-three" aria-hidden="true"/>
-        <div className="section-shell final-inner" data-reveal>
-          <span className="final-mark"><Icon name="store"/></span>
-          <div className="final-kicker">Your store already moves fast.</div>
-          <h2>Give yourself a clearer way<br/>to <span>keep up.</span></h2>
-          <p>Open Tindahan and see how inventory, sales, receipts, and reports can feel simpler in one place.</p>
-          <div className="final-actions"><a className="button button-light button-large" href={`${APP_URL}/register`}>Try Tindahan <Icon name="arrow"/></a><a className="button button-dark-ghost button-large" href={`${APP_URL}/sign-in`}>I already have an account</a></div>
+      <section className="section features-section" id="features">
+        <div className="container">
+          <div className="section-heading centered" data-reveal><div className="section-kicker"><span>02</span> THE STORE OPERATING LAYER</div><h2>Everything important.<br/><em>Nothing pretending to be an ERP.</em></h2><p>Each part is built around a real store task—fast enough for the counter, clear enough for the end of the day.</p></div>
+          <div className="feature-bento">
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              return <article className={`feature-card feature-${index+1}`} data-reveal key={feature.title}><div className="feature-top"><span className="feature-icon"><Icon /></span><small>{feature.eyebrow}</small></div><h3>{feature.title}</h3><p>{feature.copy}</p>{index === 0 && <InventoryVisual />}{index === 1 && <BarcodeVisual />}{index === 2 && <ReceiptVisual />}{index === 3 && <ReportsVisual />}{index === 4 && <TeamVisual />}{index === 5 && <LocaleVisual />}</article>;
+            })}
+          </div>
         </div>
       </section>
+
+      <section className="section intelligence-section" id="receipt-intelligence">
+        <div className="intelligence-light one"/><div className="intelligence-light two"/>
+        <div className="container intelligence-grid">
+          <div className="intelligence-copy" data-reveal>
+            <div className="section-kicker light"><span>03</span> RECEIPT INTELLIGENCE</div>
+            <h2>Your supplier receipt<br/><em>becomes a decision, not data entry.</em></h2>
+            <p>Upload or capture the receipt. TINDAHAN extracts the important details, organizes the lines, suggests product matches, and gives you a clean review before anything touches stock.</p>
+            <div className="intelligence-points"><span><ShieldIcon /> AI proposes. You approve.</span><span><ZapIcon /> Product mappings can be remembered.</span><span><ReceiptIcon /> Original receipt stays private.</span></div>
+            <a className="button button-light" href={`${APP}/register`}>Try the workflow <ArrowUpRight /></a>
+          </div>
+          <div className="intelligence-machine" data-reveal>
+            <div className="machine-grid"/>
+            <div className="machine-node node-receipt"><span><ReceiptIcon /></span><b>Receipt image</b><small>Private upload</small></div>
+            <div className="machine-connector connector-a"><i/></div>
+            <div className="machine-core"><div className="core-orbit"><i/><i/><i/></div><span><Sparkles /></span><b>Receipt Intelligence</b><small>Extract · normalize · match</small></div>
+            <div className="machine-connector connector-b"><i/></div>
+            <div className="machine-node node-review"><span><CheckIcon /></span><b>Review proposal</b><small>You stay in control</small></div>
+            <div className="machine-output"><div><small>JASMINE RICE 5KG</small><b>6 units</b><span>Matched to inventory <CheckIcon /></span></div><div><small>3-IN-1 COFFEE</small><b>24 sachets</b><span>Matched to inventory <CheckIcon /></span></div><div><small>BATH SOAP</small><b>12 pieces</b><span>New mapping suggested <Sparkles /></span></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section workflow-section" id="workflow">
+        <div className="container">
+          <div className="section-heading split" data-reveal><div><div className="section-kicker"><span>04</span> BUILT AROUND CONFIDENCE</div><h2>Automation where it helps.<br/><em>Control where it matters.</em></h2></div><p>TINDAHAN is designed around one rule: the system can make the boring parts faster, but important store decisions stay understandable and reviewable.</p></div>
+          <div className="workflow-track">
+            <div className="flow-line"/>
+            <FlowStep number="01" icon={<ScanIcon />} title="Capture" copy="Scan a barcode, record a sale, or upload a supplier receipt." />
+            <FlowStep number="02" icon={<Sparkles />} title="Understand" copy="TINDAHAN organizes the data and surfaces what deserves attention." />
+            <FlowStep number="03" icon={<CheckIcon />} title="Confirm" copy="Review meaningful changes before they become store history." />
+            <FlowStep number="04" icon={<ChartIcon />} title="See the store" copy="Inventory, reports, and daily activity stay connected afterward." />
+          </div>
+        </div>
+      </section>
+
+      <section className="section built-section">
+        <div className="container built-grid">
+          <div className="built-visual" data-reveal>
+            <div className="arch-grid"/><div className="arch-ring ring-a"/><div className="arch-ring ring-b"/>
+            <div className="arch-core"><StoreIcon /><b>TINDAHAN</b><small>STORE OPERATING ASSISTANT</small></div>
+            <div className="arch-pill pill-aws">AWS <span>Private storage + worker</span></div>
+            <div className="arch-pill pill-azure">Azure AI <span>Document intelligence</span></div>
+            <div className="arch-pill pill-db">PostgreSQL <span>Store data + history</span></div>
+            <div className="arch-pill pill-web">Next.js <span>Responsive application</span></div>
+          </div>
+          <div className="built-copy" data-reveal><div className="section-kicker"><span>05</span> MORE THAN A PRETTY DASHBOARD</div><h2>Built like a real application.<br/><em>Because it is one.</em></h2><p>Private cloud storage, background receipt processing, role-based access, store isolation, traceable inventory movement, idempotent approvals, and provider integrations sit behind the interface.</p><div className="tech-list"><span>Next.js</span><span>TypeScript</span><span>PostgreSQL</span><span>Prisma</span><span>AWS S3</span><span>AWS Lambda</span><span>Azure AI</span><span>Xendit</span></div></div>
+        </div>
+      </section>
+
+      <section className="section pilot-section" id="pilot">
+        <div className="container pilot-card">
+          <div className="pilot-stars" aria-hidden="true"><i/><i/><i/><i/><i/><i/></div>
+          <div className="pilot-copy" data-reveal><span className="pilot-badge"><i/> PILOT MODE</span><h2>See what a modern<br/>neighborhood store system<br/><em>can feel like.</em></h2><p>TINDAHAN is currently running as a working pilot/test-mode SaaS project. Explore the product, create an account, and try the workflows for yourself.</p><div className="pilot-actions"><a className="button button-light" href={`${APP}/register`}>Create an account <ArrowUpRight /></a><a className="pilot-signin" href={`${APP}/sign-in`}>Already have one? Sign in <ArrowRight /></a></div></div>
+          <div className="pilot-device" data-reveal><div className="phone-glow"/><div className="phone"><div className="phone-top"><i/><span>TINDAHAN</span><b>•••</b></div><div className="phone-content"><small>GOOD AFTERNOON</small><h4>Your store at a glance.</h4><div className="phone-sales"><span>Sales today</span><strong>₱8,420</strong><small>42 transactions</small><div className="spark-chart">{[24,38,30,58,46,76,60,84,72,92].map((h,i)=><i key={i} style={{height:`${h}%`}}/>)}</div></div><div className="phone-row"><span><i className="orange-dot"/>Receipt ready</span><b>Review →</b></div><div className="phone-row"><span><i className="olive-dot"/>Low stock</span><b>7 items →</b></div><button>+ Record sale</button></div></div></div>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <div className="container footer-grid"><div><a className="brand footer-brand" href="#top"><span className="brand-icon"><StoreIcon /></span><span>TINDAHAN</span></a><p>A Store Operating Assistant for independent Philippine retailers.</p></div><div className="footer-links"><div><b>Product</b><a href="#features">Features</a><a href="#receipt-intelligence">Receipt Intelligence</a><a href="#workflow">How it works</a></div><div><b>Application</b><a href={`${APP}/sign-in`}>Sign in ↗</a><a href={`${APP}/register`}>Create account ↗</a></div></div></div>
+        <div className="container footer-bottom"><span>© 2026 TINDAHAN</span><span>Designed for the pace of a real store.</span></div>
+      </footer>
     </main>
-
-    <footer className="site-footer">
-      <div className="section-shell footer-grid">
-        <div><a className="brand footer-brand" href="#top"><span className="brand-glyph"><Icon name="store"/></span><span>Tindahan</span></a><p>A Store Operating Assistant for small Philippine stores.</p></div>
-        <div className="footer-links"><a href="#features">Features</a><a href="#receipts">Receipt scan</a><a href="#how">How it works</a><a href="#faq">FAQ</a></div>
-        <div className="footer-actions"><a href={`${APP_URL}/sign-in`}>Sign in ↗</a><a href={`${APP_URL}/register`}>Open Tindahan ↗</a></div>
-      </div>
-      <div className="section-shell footer-bottom"><span>© 2026 Tindahan</span><span>Built for the everyday rhythm of a small store.</span></div>
-    </footer>
-  </>;
+  );
 }
+
+function FlowStep({number, icon, title, copy}:{number:string;icon:React.ReactNode;title:string;copy:string}) { return <article className="flow-step" data-reveal><span className="flow-number">{number}</span><div className="flow-icon">{icon}</div><h3>{title}</h3><p>{copy}</p></article>; }
+
+function InventoryVisual(){return <div className="feature-visual inventory-visual"><div className="inv-head"><span>Product</span><span>Stock</span></div><div className="inv-row"><i className="product-dot rice"/><span>Jasmine Rice 5kg</span><b>3</b><em>Low</em></div><div className="inv-row"><i className="product-dot coffee"/><span>3-in-1 Coffee</span><b>28</b><em className="good">Good</em></div><div className="inv-row"><i className="product-dot soap"/><span>Bath Soap</span><b>12</b><em className="watch">Watch</em></div></div>}
+function BarcodeVisual(){return <div className="feature-visual barcode-visual"><div className="scanner-corners"><i/><i/><i/><i/></div><div className="barcode-lines">|||| | ||| || |||| | | |||</div><div className="laser"/><span>4800888134012</span><small>Product found · ₱18.00</small></div>}
+function ReceiptVisual(){return <div className="feature-visual receipt-visual"><div className="mini-receipt"><b>SUPPLIER</b><span>Rice 5kg · 6</span><span>Coffee · 24</span><span>Soap · 12</span><hr/><strong>₱2,846</strong><div className="mini-scan"/></div><div className="mapping-lines"><span><i/> Rice <b>Matched</b></span><span><i/> Coffee <b>Matched</b></span><span><i/> Soap <b>Suggested</b></span></div></div>}
+function ReportsVisual(){return <div className="feature-visual reports-visual"><div className="report-line">{[20,30,24,48,44,72,68,84].map((v,i)=><i key={i} style={{height:`${v}%`}}/>)}</div><div className="report-stat"><span>This week</span><strong>₱42.8k</strong><small>Sales recorded</small></div></div>}
+function TeamVisual(){return <div className="feature-visual team-visual"><div className="avatar owner">MS</div><div><b>Maria Santos</b><small>Owner · full store access</small></div><div className="team-divider"/><div className="avatar staff">JP</div><div><b>Juan P.</b><small>Staff · daily workflows</small></div></div>}
+function LocaleVisual(){return <div className="feature-visual locale-visual"><div className="locale-switch"><span className="active">EN</span><span>FIL</span></div><div className="locale-copy"><small>LOW STOCK</small><b>7 products need attention</b><p>Review items before they run out.</p></div><div className="locale-arrow">⇄</div><div className="locale-copy fil"><small>PAUBOS NA</small><b>7 produkto ang dapat tingnan</b><p>Tingnan bago tuluyang maubos.</p></div></div>}
