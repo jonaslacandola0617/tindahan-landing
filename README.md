@@ -1,45 +1,33 @@
-# Tindahan Landing Page
+# TINDAHAN Landing
 
-Public marketing site for Tindahan, a Store Operating Assistant built for small Philippine stores.
+Public marketing site for **TINDAHAN**, a Store Operating Assistant for independent Philippine retailers.
 
-This repository is intentionally separate from the main application. It contains only the public-facing marketing experience and sends registration and sign-in traffic to the production Tindahan app.
-
-## Direction
-
-The landing page extends Tindahan's **Warm Utility** visual identity into a more expressive marketing experience: editorial typography, layered product mockups, tactile paper-inspired details, kinetic accents, scroll reveals, responsive micro-interactions, and restrained pointer-driven depth.
-
-The visual treatment is deliberately richer than the application itself, but the UX rule stays the same: the page must remain readable and obvious to people with low computer literacy. Motion supports hierarchy and product storytelling instead of hiding basic actions or making navigation harder.
-
-## Stack
-
-- Next.js 16
-- React 19
-- TypeScript
-- Custom CSS art direction and animation
-- IntersectionObserver-based reveal motion
-- Reduced-motion support
-- Responsive desktop, tablet, and mobile layouts
-
-No animation framework is required; the page keeps its interaction layer lightweight and dependency-free.
+The marketing site is intentionally separate from the authenticated application so each can evolve and deploy independently.
 
 ## Local development
 
 ```bash
-npm install
+pnpm install
 cp .env.example .env.local
-npm run dev
+pnpm dev
 ```
 
-Set `APP_URL` to the base URL of the separate Tindahan application. Registration and sign-in links are generated from that environment variable so changing the application domain does not require a code change.
+Set `APP_URL=https://tindahan.vercel.app` (or the future app subdomain) so marketing CTAs point to the authenticated application.
 
-## Production checks
+## Quality checks
 
 ```bash
-npm run lint
-npm run typecheck
-npm run build
+pnpm lint
+pnpm typecheck
+pnpm build
 ```
 
-## Application
+## Product links
 
-The actual Tindahan SaaS application lives in the separate `tindahan-store-assistant` repository. Its public address is configured through `APP_URL` rather than hardcoded into the landing page.
+- Landing page repository: this project
+- Application: https://tindahan.vercel.app
+- Application repository: https://github.com/jonaslacandola0617/tindahan-store-assistant
+
+## Design direction
+
+The landing page extends TINDAHAN's existing Warm Utility identity into a more expressive marketing system: deep emerald surfaces, warm amber accents, spatial UI compositions, cinematic lighting, glass depth, and restrained purposeful motion. The actual application remains calmer and more utilitarian.
