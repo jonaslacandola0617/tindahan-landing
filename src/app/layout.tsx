@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./showcase.css";
 import "./usability.css";
+import "./responsive-header.css";
 
 export const metadata: Metadata = {
   title: "Tindahan — Store Operating Assistant",
