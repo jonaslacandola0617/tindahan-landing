@@ -26,8 +26,11 @@ No animation framework is required; the page keeps its interaction layer lightwe
 
 ```bash
 npm install
+cp .env.example .env.local
 npm run dev
 ```
+
+Set `APP_URL` to the base URL of the separate TINDAHAN application. Registration and sign-in links are generated from that environment variable so changing the application domain does not require a code change.
 
 ## Production checks
 
@@ -39,4 +42,4 @@ npm run build
 
 ## Application
 
-The actual TINDAHAN SaaS application lives in the separate `tindahan-store-assistant` repository and is available at `https://tindahan.vercel.app`.
+The actual TINDAHAN SaaS application lives in the separate `tindahan-store-assistant` repository. Its public address is configured through `APP_URL` rather than hardcoded into the landing page.
