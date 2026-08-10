@@ -3,12 +3,12 @@ import "./globals.css";
 import "./showcase.css";
 
 export const metadata: Metadata = {
-  title: "TINDAHAN — Store Operating Assistant",
+  title: "Tindahan — Store Operating Assistant",
   description: "Inventory, sales, barcode scanning, receipt intelligence, reports, and staff access for small Philippine stores.",
-  applicationName: "TINDAHAN",
+  applicationName: "Tindahan",
   keywords: ["Tindahan", "inventory", "sales", "receipt scanner", "sari-sari store", "Philippines", "store management"],
   openGraph: {
-    title: "TINDAHAN — Less guessing. More control.",
+    title: "Tindahan — Less guessing. More control.",
     description: "A store operating assistant built for the everyday rhythm of small Philippine stores.",
     type: "website",
   },

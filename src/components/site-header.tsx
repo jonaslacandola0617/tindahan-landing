@@ -3,9 +3,11 @@
 import { useEffect, useState } from "react";
 import { Icon } from "./icon";
 
-const APP_URL = "https://tindahan.vercel.app";
+type SiteHeaderProps = {
+  appUrl: string;
+};
 
-export function SiteHeader() {
+export function SiteHeader({ appUrl }: SiteHeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -26,7 +28,7 @@ export function SiteHeader() {
     <div className="scroll-progress" aria-hidden="true"><span style={{ width: `${progress}%` }}/></div>
     <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
       <div className="nav-shell">
-        <a className="brand" href="#top" aria-label="TINDAHAN home">
+        <a className="brand" href="#top" aria-label="Tindahan home">
           <span className="brand-glyph"><Icon name="store"/></span>
           <span>Tindahan</span>
         </a>
@@ -36,13 +38,13 @@ export function SiteHeader() {
           <a href="#receipts" onClick={() => setOpen(false)}>Receipt scan</a>
           <a href="#how" onClick={() => setOpen(false)}>How it works</a>
           <a href="#faq" onClick={() => setOpen(false)}>FAQ</a>
-          <a className="nav-mobile-signin" href={`${APP_URL}/sign-in`}>Sign in</a>
+          <a className="nav-mobile-signin" href={`${appUrl}/sign-in`}>Sign in</a>
         </nav>
 
         <div className="nav-actions">
-          <a className="nav-signin" href={`${APP_URL}/sign-in`}>Sign in</a>
-          <a className="button button-small button-primary" href={`${APP_URL}/register`}>
-            Try TINDAHAN <Icon name="arrow"/>
+          <a className="nav-signin" href={`${appUrl}/sign-in`}>Sign in</a>
+          <a className="button button-small button-primary" href={`${appUrl}/register`}>
+            Try Tindahan <Icon name="arrow"/>
           </a>
           <button className="nav-toggle" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(value => !value)}>
             <Icon name={open ? "close" : "menu"}/>

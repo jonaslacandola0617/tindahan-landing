@@ -1,7 +1,7 @@
 import { Icon } from "@/components/icon";
 import { MotionBoot, SiteHeader } from "@/components/site-header";
 
-const APP_URL = "https://tindahan.vercel.app";
+const APP_URL = (process.env.APP_URL ?? "").replace(/\/+$/, "");
 
 const features = [
   {
@@ -22,7 +22,7 @@ const features = [
     icon: "receipt" as const,
     kicker: "Receipt intelligence",
     title: "Let the receipt do most of the typing.",
-    copy: "Upload a supplier receipt and TINDAHAN prepares the items for review before anything touches your inventory.",
+    copy: "Upload a supplier receipt and Tindahan prepares the items for review before anything touches your inventory.",
     className: "feature-receipts",
   },
   {
@@ -51,7 +51,7 @@ const features = [
 export default function Home() {
   return <>
     <MotionBoot />
-    <SiteHeader />
+    <SiteHeader appUrl={APP_URL} />
 
     <main id="top">
       <section className="hero section-shell" aria-labelledby="hero-title">
@@ -61,10 +61,10 @@ export default function Home() {
 
         <div className="hero-copy">
           <div className="eyebrow hero-eyebrow"><span className="eyebrow-dot"/> Store Operating Assistant · Para sa araw-araw na tindahan</div>
-          <h1 id="hero-title">Run the store.<br/><span>TINDAHAN keeps up.</span></h1>
+          <h1 id="hero-title">Run the store.<br/><span>Tindahan keeps up.</span></h1>
           <p className="hero-lede">Track stock, record sales, scan supplier receipts, and see what needs attention—without turning your store into a complicated system.</p>
           <div className="hero-actions">
-            <a className="button button-primary button-large" href={`${APP_URL}/register`}>Try TINDAHAN <Icon name="arrow"/></a>
+            <a className="button button-primary button-large" href={`${APP_URL}/register`}>Try Tindahan <Icon name="arrow"/></a>
             <a className="button button-ghost button-large" href="#how">See how it works</a>
           </div>
           <div className="hero-proof" aria-label="Product highlights">
@@ -74,7 +74,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-visual" aria-label="TINDAHAN product preview">
+        <div className="hero-visual" aria-label="Tindahan product preview">
           <div className="stage-orbit stage-orbit-one" aria-hidden="true"/>
           <div className="stage-orbit stage-orbit-two" aria-hidden="true"/>
           <div className="stage-spark stage-spark-one" aria-hidden="true"><Icon name="sparkle"/></div>
@@ -132,19 +132,19 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="ticker" aria-label="TINDAHAN capabilities">
+      <div className="ticker" aria-label="Tindahan capabilities">
         <div className="ticker-track">
           {["INVENTORY","BENTA","RESIBO","BARCODE","REPORTS","LOW STOCK","STAFF","FILIPINO","INVENTORY","BENTA","RESIBO","BARCODE","REPORTS","LOW STOCK","STAFF","FILIPINO"].map((item, index) => <span key={`${item}-${index}`}><i/> {item}</span>)}
         </div>
       </div>
 
       <section className="manifesto section-shell" data-reveal>
-        <div className="section-index">01 / WHY TINDAHAN</div>
+        <div className="section-index">01 / WHY Tindahan</div>
         <div className="manifesto-grid">
           <h2>Built around the way a small store <em>actually moves.</em></h2>
           <div className="manifesto-copy">
             <p>Small stores already have enough going on. Customers are waiting, deliveries arrive, stock disappears faster than expected, and receipts pile up.</p>
-            <p>TINDAHAN keeps the important things in one place, then gets out of the way.</p>
+            <p>Tindahan keeps the important things in one place, then gets out of the way.</p>
           </div>
         </div>
         <div className="paper-notes" aria-hidden="true">
@@ -157,7 +157,7 @@ export default function Home() {
       <section className="features section-shell" id="features">
         <div className="section-heading" data-reveal>
           <div><div className="section-index">02 / WHAT IT DOES</div><h2>Everything you need.<br/><span>Nothing you don&apos;t.</span></h2></div>
-          <p>Each part of TINDAHAN is built around a normal store task, so the app feels familiar even if you are not used to business software.</p>
+          <p>Each part of Tindahan is built around a normal store task, so the app feels familiar even if you are not used to business software.</p>
         </div>
 
         <div className="feature-grid">
@@ -219,10 +219,10 @@ export default function Home() {
           <div className="receipt-copy" data-reveal>
             <div className="section-index light">03 / RECEIPT INTELLIGENCE</div>
             <h2>Take a photo.<br/><span>Skip the typing.</span></h2>
-            <p className="receipt-lede">TINDAHAN reads supplier receipts and prepares a stock update for you. It never changes inventory behind your back.</p>
+            <p className="receipt-lede">Tindahan reads supplier receipts and prepares a stock update for you. It never changes inventory behind your back.</p>
             <div className="receipt-steps">
               <div><b>01</b><span><strong>Scan or upload</strong><small>Use your phone camera or choose a receipt photo.</small></span></div>
-              <div><b>02</b><span><strong>Check what TINDAHAN found</strong><small>Fix quantities, match products, or leave out lines you do not need.</small></span></div>
+              <div><b>02</b><span><strong>Check what Tindahan found</strong><small>Fix quantities, match products, or leave out lines you do not need.</small></span></div>
               <div><b>03</b><span><strong>You approve the update</strong><small>Stock changes only after you say everything looks right.</small></span></div>
             </div>
             <div className="human-control"><Icon name="shield"/><span><b>AI suggests. You decide.</b><small>Automation helps with the repetitive work without taking control away from the owner.</small></span></div>
@@ -270,11 +270,11 @@ export default function Home() {
       <section className="faq section-shell" id="faq">
         <div className="faq-intro" data-reveal><div className="section-index">06 / QUESTIONS</div><h2>Before you try it.</h2><p>No technical language. Just the things you probably want to know first.</p></div>
         <div className="faq-list" data-reveal>
-          <details><summary>Is TINDAHAN a POS system?<span>+</span></summary><p>No. TINDAHAN is a lightweight store operating assistant. It helps with inventory, sales records, supplier receipts, reports, and everyday store tasks without trying to replace your whole business with a complex enterprise system.</p></details>
+          <details><summary>Is Tindahan a POS system?<span>+</span></summary><p>No. Tindahan is a lightweight store operating assistant. It helps with inventory, sales records, supplier receipts, reports, and everyday store tasks without trying to replace your whole business with a complex enterprise system.</p></details>
           <details><summary>Do I need special barcode equipment?<span>+</span></summary><p>No. You can use compatible barcodes with a camera, a keyboard-style scanner, or enter products manually when needed.</p></details>
-          <details><summary>Will a scanned receipt change my stock automatically?<span>+</span></summary><p>No. TINDAHAN prepares a review first. You check the items and quantities, then approve the update yourself.</p></details>
+          <details><summary>Will a scanned receipt change my stock automatically?<span>+</span></summary><p>No. Tindahan prepares a review first. You check the items and quantities, then approve the update yourself.</p></details>
           <details><summary>Can my staff use the app too?<span>+</span></summary><p>Yes. Staff can have their own account and store access, so you do not need to share the owner password.</p></details>
-          <details><summary>Can I use TINDAHAN in Filipino?<span>+</span></summary><p>Yes. The interface can switch between English and Filipino.</p></details>
+          <details><summary>Can I use Tindahan in Filipino?<span>+</span></summary><p>Yes. The interface can switch between English and Filipino.</p></details>
         </div>
       </section>
 
@@ -284,8 +284,8 @@ export default function Home() {
           <span className="final-mark"><Icon name="store"/></span>
           <div className="final-kicker">Your store already moves fast.</div>
           <h2>Give yourself a clearer way<br/>to <span>keep up.</span></h2>
-          <p>Open TINDAHAN and see how inventory, sales, receipts, and reports can feel simpler in one place.</p>
-          <div className="final-actions"><a className="button button-light button-large" href={`${APP_URL}/register`}>Try TINDAHAN <Icon name="arrow"/></a><a className="button button-dark-ghost button-large" href={`${APP_URL}/sign-in`}>I already have an account</a></div>
+          <p>Open Tindahan and see how inventory, sales, receipts, and reports can feel simpler in one place.</p>
+          <div className="final-actions"><a className="button button-light button-large" href={`${APP_URL}/register`}>Try Tindahan <Icon name="arrow"/></a><a className="button button-dark-ghost button-large" href={`${APP_URL}/sign-in`}>I already have an account</a></div>
         </div>
       </section>
     </main>
@@ -294,9 +294,9 @@ export default function Home() {
       <div className="section-shell footer-grid">
         <div><a className="brand footer-brand" href="#top"><span className="brand-glyph"><Icon name="store"/></span><span>Tindahan</span></a><p>A Store Operating Assistant for small Philippine stores.</p></div>
         <div className="footer-links"><a href="#features">Features</a><a href="#receipts">Receipt scan</a><a href="#how">How it works</a><a href="#faq">FAQ</a></div>
-        <div className="footer-actions"><a href={`${APP_URL}/sign-in`}>Sign in ↗</a><a href={`${APP_URL}/register`}>Open TINDAHAN ↗</a></div>
+        <div className="footer-actions"><a href={`${APP_URL}/sign-in`}>Sign in ↗</a><a href={`${APP_URL}/register`}>Open Tindahan ↗</a></div>
       </div>
-      <div className="section-shell footer-bottom"><span>© 2026 TINDAHAN</span><span>Built for the everyday rhythm of a small store.</span></div>
+      <div className="section-shell footer-bottom"><span>© 2026 Tindahan</span><span>Built for the everyday rhythm of a small store.</span></div>
     </footer>
   </>;
 }
