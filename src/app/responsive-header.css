@@ -1,0 +1,22 @@
+/* Mobile-only sizing guard for the existing floating header. */
+@media (max-width: 860px) {
+  .nav-shell {
+    width: auto;
+    max-width: calc(100vw - 24px);
+    margin-inline: 12px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+  }
+
+  .brand,
+  .nav-actions {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-shell {
+    max-width: calc(100vw - 20px);
+    margin-inline: 10px;
+  }
+}

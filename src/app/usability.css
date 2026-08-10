@@ -1,0 +1,540 @@
+/* Readability and usability refinements layered on top of the existing design. */
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 220;
+  left: 16px;
+  top: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--brand-deep);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  transform: translateY(-150%);
+  transition: transform 160ms var(--ease);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid rgba(217, 119, 36, .65);
+  outline-offset: 4px;
+}
+
+.scroll-progress span {
+  width: 100%;
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.nav-links,
+.nav-signin {
+  font-size: 14px;
+}
+
+.button-small {
+  font-size: 14px;
+}
+
+.button-large {
+  font-size: 15px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.hero-lede {
+  font-size: 19px;
+  line-height: 1.72;
+}
+
+.hero-proof {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.ticker-track span {
+  font-size: 10px;
+}
+
+.section-index {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.manifesto-copy {
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.section-heading > p {
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.feature-kicker {
+  font-size: 10px;
+}
+
+.feature-card > p {
+  font-size: 15px;
+  line-height: 1.72;
+}
+
+.receipt-lede {
+  color: rgba(255, 255, 255, .79);
+  font-size: 17px;
+  line-height: 1.72;
+}
+
+.receipt-steps strong {
+  font-size: 15px;
+}
+
+.receipt-steps small {
+  color: rgba(255, 255, 255, .72);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.human-control b {
+  font-size: 13px;
+}
+
+.human-control small {
+  color: rgba(255, 255, 255, .72);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.how-number {
+  font-size: 10px;
+}
+
+.how-track p {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.how-caption {
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.control-copy > p {
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.trust-list span {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.faq-intro p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.faq-list summary {
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.faq-list details p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.final-kicker {
+  color: rgba(255, 255, 255, .76);
+  font-size: 11px;
+}
+
+.final-inner > p {
+  color: rgba(255, 255, 255, .79);
+  font-size: 16px;
+  line-height: 1.72;
+}
+
+.footer-grid > div:first-child p {
+  color: rgba(255, 255, 255, .7);
+  font-size: 13px;
+}
+
+.footer-links,
+.footer-actions {
+  color: rgba(255, 255, 255, .76);
+  font-size: 13px;
+}
+
+.footer-bottom {
+  color: rgba(255, 255, 255, .58);
+  font-size: 10px;
+}
+
+/* Tighten the vertical rhythm without changing the composition. */
+.manifesto {
+  padding-block: 118px 108px;
+}
+
+.features {
+  padding-block: 112px 124px;
+}
+
+.section-heading {
+  margin-bottom: 48px;
+}
+
+.receipt-story {
+  padding-block: 120px;
+}
+
+.how {
+  padding-block: 118px;
+}
+
+.how-track {
+  margin-top: 60px;
+}
+
+.control {
+  padding-bottom: 118px;
+}
+
+.faq {
+  padding-block: 108px 124px;
+  gap: 86px;
+}
+
+.final-cta {
+  padding-block: 108px 104px;
+}
+
+@media (max-width: 860px) {
+  .nav-links {
+    font-size: 16px;
+    line-height: 1.35;
+  }
+
+  .nav-links a {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero {
+    min-height: 1030px;
+    padding-top: 132px;
+  }
+
+  .manifesto,
+  .features,
+  .how {
+    padding-block: 88px;
+  }
+
+  .receipt-story {
+    padding-block: 88px;
+  }
+
+  .faq {
+    padding-block: 88px;
+  }
+
+  .control {
+    padding-bottom: 88px;
+  }
+
+  .final-cta {
+    padding-block: 88px;
+  }
+
+  .feature-card > p,
+  .section-heading > p,
+  .control-copy > p,
+  .faq-intro p,
+  .faq-list details p {
+    font-size: 16px;
+  }
+
+  .how-track p {
+    font-size: 15px;
+  }
+
+  .trust-list span {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    top: 10px;
+  }
+
+  .nav-shell {
+    min-height: 62px;
+    padding-left: 14px;
+  }
+
+  .nav-toggle {
+    width: 46px;
+    height: 46px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 116px;
+    padding-bottom: 48px;
+    gap: 8px;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+  }
+
+  .hero-lede {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  .hero-proof {
+    font-size: 13px;
+    gap: 9px;
+  }
+
+  .button-large {
+    min-height: 58px;
+    font-size: 16px;
+  }
+
+  .hero-visual {
+    min-height: 470px;
+    margin-top: 0;
+  }
+
+  .manifesto,
+  .features,
+  .receipt-story,
+  .how,
+  .faq {
+    padding-block: 74px;
+  }
+
+  .control {
+    padding-bottom: 74px;
+  }
+
+  .final-cta {
+    padding-block: 80px;
+  }
+
+  .manifesto-copy,
+  .section-heading > p,
+  .feature-card > p,
+  .receipt-lede,
+  .control-copy > p,
+  .faq-intro p,
+  .faq-list details p,
+  .final-inner > p {
+    font-size: 16px;
+  }
+
+  .paper-notes {
+    height: 450px;
+    margin-top: 38px;
+  }
+
+  .feature-card,
+  .feature-card:nth-child(n+4) {
+    min-height: 450px;
+  }
+
+  .receipt-demo {
+    min-height: 490px;
+  }
+
+  .receipt-steps {
+    margin-top: 28px;
+  }
+
+  .receipt-steps > div {
+    min-height: 0;
+    padding-block: 18px;
+  }
+
+  .receipt-steps strong {
+    font-size: 16px;
+  }
+
+  .receipt-steps small {
+    font-size: 14px;
+  }
+
+  .human-control {
+    padding: 17px;
+  }
+
+  .human-control b {
+    font-size: 14px;
+  }
+
+  .human-control small {
+    font-size: 13px;
+  }
+
+  .how-track {
+    margin-top: 36px;
+  }
+
+  .how-track article {
+    min-height: 275px;
+  }
+
+  .how-track p {
+    font-size: 15px;
+  }
+
+  .how-caption {
+    font-size: 11px;
+  }
+
+  .control-art {
+    min-height: 400px;
+  }
+
+  .control-chip {
+    font-size: 10px;
+  }
+
+  .control-copy {
+    padding: 0 22px 36px;
+  }
+
+  .trust-list span {
+    font-size: 13px;
+  }
+
+  .faq-list summary {
+    min-height: 72px;
+    font-size: 17px;
+  }
+
+  .faq-list details p {
+    margin-bottom: 24px;
+  }
+
+  .site-footer {
+    padding-top: 46px;
+  }
+
+  .footer-grid {
+    gap: 34px;
+    padding-bottom: 40px;
+  }
+
+  .footer-links,
+  .footer-actions {
+    gap: 6px;
+  }
+
+  .footer-links a,
+  .footer-actions a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+
+  .footer-bottom {
+    min-height: 64px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero h1 {
+    font-size: 44px;
+    letter-spacing: -.06em;
+  }
+
+  .hero-visual {
+    min-height: 440px;
+  }
+
+  .dashboard-window {
+    transform: translate(-50%, -50%) scale(.53);
+  }
+
+  .float-card {
+    min-width: 200px;
+  }
+
+  .float-receipt {
+    right: -11%;
+  }
+
+  .float-stock {
+    left: -10%;
+  }
+
+  .manifesto h2,
+  .section-heading h2,
+  .control-copy h2 {
+    font-size: 39px;
+  }
+
+  .receipt-demo {
+    min-height: 455px;
+  }
+
+  .receipt-camera-frame {
+    width: 310px;
+    height: 440px;
+  }
+
+  .real-receipt {
+    width: 220px;
+    min-height: 335px;
+  }
+
+  .scan-result-card {
+    min-width: 165px;
+  }
+
+  .receipt-copy h2 {
+    font-size: 44px;
+  }
+
+  .faq-intro h2 {
+    font-size: 43px;
+  }
+
+  .final-inner h2 {
+    font-size: 46px;
+  }
+}
+
+@media (hover: none) {
+  .button:hover,
+  .feature-card:hover,
+  .how-track article:hover,
+  .receipt-demo:hover .receipt-camera-frame {
+    transform: none;
+  }
+}

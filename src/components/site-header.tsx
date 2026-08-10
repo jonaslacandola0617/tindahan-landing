@@ -13,19 +13,49 @@ export function SiteHeader({ appUrl }: SiteHeaderProps) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const onScroll = () => {
+    let frame = 0;
+
+    const updateScrollState = () => {
       setScrolled(window.scrollY > 18);
       const max = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
-      setProgress(Math.min(100, Math.max(0, (window.scrollY / max) * 100)));
+      setProgress(Math.min(1, Math.max(0, window.scrollY / max)));
     };
 
-    onScroll();
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(updateScrollState);
+    };
+
+    updateScrollState();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+
+    const onResize = () => {
+      if (window.innerWidth > 860) setOpen(false);
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("resize", onResize, { passive: true });
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [open]);
+
   return <>
-    <div className="scroll-progress" aria-hidden="true"><span style={{ width: `${progress}%` }}/></div>
+    <a className="skip-link" href="#top">Skip to content</a>
+    <div className="scroll-progress" aria-hidden="true"><span style={{ transform: `scaleX(${progress})` }}/></div>
     <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
       <div className="nav-shell">
         <a className="brand" href="#top" aria-label="Tindahan home">
@@ -33,12 +63,12 @@ export function SiteHeader({ appUrl }: SiteHeaderProps) {
           <span>Tindahan</span>
         </a>
 
-        <nav className={`nav-links${open ? " is-open" : ""}`} aria-label="Main navigation">
+        <nav id="main-navigation" className={`nav-links${open ? " is-open" : ""}`} aria-label="Main navigation">
           <a href="#features" onClick={() => setOpen(false)}>Features</a>
           <a href="#receipts" onClick={() => setOpen(false)}>Receipt scan</a>
           <a href="#how" onClick={() => setOpen(false)}>How it works</a>
           <a href="#faq" onClick={() => setOpen(false)}>FAQ</a>
-          <a className="nav-mobile-signin" href={`${appUrl}/sign-in`}>Sign in</a>
+          <a className="nav-mobile-signin" href={`${appUrl}/sign-in`} onClick={() => setOpen(false)}>Sign in</a>
         </nav>
 
         <div className="nav-actions">
@@ -46,7 +76,14 @@ export function SiteHeader({ appUrl }: SiteHeaderProps) {
           <a className="button button-small button-primary" href={`${appUrl}/register`}>
             Try Tindahan <Icon name="arrow"/>
           </a>
-          <button className="nav-toggle" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(value => !value)}>
+          <button
+            className="nav-toggle"
+            type="button"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="main-navigation"
+            onClick={() => setOpen(value => !value)}
+          >
             <Icon name={open ? "close" : "menu"}/>
           </button>
         </div>
@@ -63,28 +100,31 @@ export function MotionBoot() {
     const elements = [...document.querySelectorAll<HTMLElement>("[data-reveal]")];
     if (!("IntersectionObserver" in window)) {
       elements.forEach(element => element.classList.add("is-visible"));
-    } else {
-      const observer = new IntersectionObserver(entries => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        }
-      }, { threshold: 0.12, rootMargin: "0px 0px -6%" });
-      elements.forEach(element => observer.observe(element));
-      return () => observer.disconnect();
+      return;
     }
+
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      }
+    }, { threshold: 0.12, rootMargin: "0px 0px -6%" });
+
+    elements.forEach(element => observer.observe(element));
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
     const root = document.documentElement;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const finePointer = window.matchMedia("(pointer: fine)");
-    let frame = 0;
 
+    if (reducedMotion.matches || !finePointer.matches) return;
+
+    let frame = 0;
     const updatePointer = (event: PointerEvent) => {
-      if (reducedMotion.matches || !finePointer.matches) return;
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         const x = (event.clientX / window.innerWidth - 0.5) * 2;
