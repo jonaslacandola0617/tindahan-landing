@@ -3,9 +3,7 @@
 import { useEffect, useState } from "react";
 import { Icon } from "./icon";
 
-const APP_URL = "https://tindahan.vercel.app";
-
-export function SiteHeader() {
+export function SiteHeader({ appUrl }: { appUrl: string }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -36,12 +34,12 @@ export function SiteHeader() {
           <a href="#receipts" onClick={() => setOpen(false)}>Receipt scan</a>
           <a href="#how" onClick={() => setOpen(false)}>How it works</a>
           <a href="#faq" onClick={() => setOpen(false)}>FAQ</a>
-          <a className="nav-mobile-signin" href={`${APP_URL}/sign-in`}>Sign in</a>
+          <a className="nav-mobile-signin" href={`${appUrl}/sign-in`}>Sign in</a>
         </nav>
 
         <div className="nav-actions">
-          <a className="nav-signin" href={`${APP_URL}/sign-in`}>Sign in</a>
-          <a className="button button-small button-primary" href={`${APP_URL}/register`}>
+          <a className="nav-signin" href={`${appUrl}/sign-in`}>Sign in</a>
+          <a className="button button-small button-primary" href={`${appUrl}/register`}>
             Try TINDAHAN <Icon name="arrow"/>
           </a>
           <button className="nav-toggle" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(value => !value)}>
