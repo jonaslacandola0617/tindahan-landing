@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "./showcase.css";
 
 export const metadata: Metadata = {
   title: "TINDAHAN — Store Operating Assistant",
