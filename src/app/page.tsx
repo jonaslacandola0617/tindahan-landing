@@ -1,7 +1,7 @@
 import { Icon } from "@/components/icon";
 import { MotionBoot, SiteHeader } from "@/components/site-header";
 
-const APP_URL = "https://tindahan.vercel.app";
+const APP_URL = (process.env.APP_URL ?? "").replace(/\/+$/, "");
 
 const features = [
   {
@@ -51,7 +51,7 @@ const features = [
 export default function Home() {
   return <>
     <MotionBoot />
-    <SiteHeader />
+    <SiteHeader appUrl={APP_URL} />
 
     <main id="top">
       <section className="hero section-shell" aria-labelledby="hero-title">
