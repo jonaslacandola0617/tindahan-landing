@@ -42,7 +42,7 @@ export default function OpenGraphImage() {
         }}
       />
 
-      <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", zIndex: 1, width: "100%" }}>
+      <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", width: "100%" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <div
             style={{
@@ -74,9 +74,8 @@ export default function OpenGraphImage() {
             <span style={{ width: 9, height: 9, borderRadius: 999, background: "#D97724" }} />
             BUILT FOR SMALL PHILIPPINE STORES
           </div>
-          <div style={{ fontSize: 68, lineHeight: 1.02, fontWeight: 800, letterSpacing: -3.2 }}>
-            Run the store.
-            <br />
+          <div style={{ display: "flex", flexDirection: "column", fontSize: 68, lineHeight: 1.02, fontWeight: 800, letterSpacing: -3.2 }}>
+            <span>Run the store.</span>
             <span style={{ color: "#1B4D3E" }}>Tindahan keeps up.</span>
           </div>
           <div style={{ marginTop: 26, maxWidth: 760, color: "#5F665E", fontSize: 24, lineHeight: 1.45 }}>
