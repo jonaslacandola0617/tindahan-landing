@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { LegalPage } from "@/components/legal-page";
 import { SITE_URL } from "@/lib/site";
 
@@ -21,7 +22,7 @@ export default function PrivacyPage() {
       <section>
         <h2>1. Who this policy covers</h2>
         <p>This Privacy Policy applies to the Tindahan website and the Tindahan Store Assistant application. Tindahan is built for small stores in the Philippines and is designed with the Data Privacy Act of 2012 (Republic Act No. 10173) and its implementing rules in mind.</p>
-        <p>For account, service, billing, and support information that Tindahan collects directly, Tindahan acts as the personal information controller. When a store owner or staff member enters information about suppliers, staff, customers, or other people into Tindahan, the store may be the personal information controller for that information and Tindahan may process it on the store's behalf to provide the service.</p>
+        <p>For account, service, billing, and support information that Tindahan collects directly, Tindahan acts as the personal information controller. When a store owner or staff member enters information about suppliers, staff, customers, or other people into Tindahan, the store may be the personal information controller for that information and Tindahan may process it on the store&apos;s behalf to provide the service.</p>
       </section>
 
       <section>
@@ -62,14 +63,14 @@ export default function PrivacyPage() {
       </section>
 
       <section>
-        <h2>7. Your responsibilities when adding other people's data</h2>
+        <h2>7. Your responsibilities when adding other people&apos;s data</h2>
         <p>If you enter or upload personal information belonging to staff, suppliers, customers, or another person, you are responsible for having a lawful purpose for doing so and for giving any notice required of your store. Do not upload personal or sensitive information that is not needed for a legitimate store purpose.</p>
       </section>
 
       <section>
         <h2>8. Your privacy rights</h2>
         <p>Subject to applicable law, you may have the right to be informed, access your personal data, object to certain processing, correct inaccurate data, request erasure or blocking where appropriate, obtain data portability where applicable, file a complaint, and seek damages for violations of your rights.</p>
-        <p>We may need to verify your identity and may retain information where deletion would conflict with a lawful retention requirement, another person's rights, or the integrity of legitimate business records.</p>
+        <p>We may need to verify your identity and may retain information where deletion would conflict with a lawful retention requirement, another person&apos;s rights, or the integrity of legitimate business records.</p>
       </section>
 
       <section>
@@ -79,12 +80,12 @@ export default function PrivacyPage() {
 
       <section>
         <h2>10. Cookies and local storage</h2>
-        <p>Tindahan currently uses essential cookies and browser storage for functions such as secure sign-in, language and theme preferences, and remembering that you have seen our cookie notice. We do not currently use advertising or analytics cookies. See our <a href="/cookies">Cookie Policy</a> for details.</p>
+        <p>Tindahan currently uses essential cookies and browser storage for functions such as secure sign-in, language and theme preferences, and remembering that you have seen our cookie notice. We do not currently use advertising or analytics cookies. See our <Link href="/cookies">Cookie Policy</Link> for details.</p>
       </section>
 
       <section>
         <h2>11. Changes to this policy</h2>
-        <p>We may update this policy when Tindahan's features, service providers, or legal obligations change. The effective date at the top of this page will be updated when we make a material revision.</p>
+        <p>We may update this policy when Tindahan&apos;s features, service providers, or legal obligations change. The effective date at the top of this page will be updated when we make a material revision.</p>
       </section>
 
       <section>
