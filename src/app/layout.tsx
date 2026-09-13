@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { CookieNotice } from "@/components/cookie-notice";
+import { LegalBar } from "@/components/legal-bar";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL, isIndexableProduction } from "@/lib/site";
 import "./globals.css";
 import "./showcase.css";
@@ -81,6 +82,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c") }}
         />
         {children}
+        <LegalBar />
         <CookieNotice />
       </body>
     </html>
