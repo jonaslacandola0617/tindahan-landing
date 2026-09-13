@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { LegalPage } from "@/components/legal-page";
 import { SITE_URL } from "@/lib/site";
 
@@ -51,7 +52,7 @@ export default function CookiesPage() {
 
       <section>
         <h2>6. Related information</h2>
-        <p>For information about personal data more generally, see the <a href="/privacy">Privacy Policy</a>. Rules for using the service are in the <a href="/terms">Terms of Service</a>.</p>
+        <p>For information about personal data more generally, see the <Link href="/privacy">Privacy Policy</Link>. Rules for using the service are in the <Link href="/terms">Terms of Service</Link>.</p>
       </section>
     </LegalPage>
   );
