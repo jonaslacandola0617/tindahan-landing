@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { LegalPage } from "@/components/legal-page";
 import { SITE_URL } from "@/lib/site";
 
@@ -20,7 +21,7 @@ export default function TermsPage() {
     >
       <section>
         <h2>1. Accepting these terms</h2>
-        <p>By creating a Tindahan account or using the service, you agree to these Terms of Service and acknowledge the <a href="/privacy">Privacy Policy</a>. If you are using Tindahan for a business, you confirm that you are authorized to accept these terms for that business.</p>
+        <p>By creating a Tindahan account or using the service, you agree to these Terms of Service and acknowledge the <Link href="/privacy">Privacy Policy</Link>. If you are using Tindahan for a business, you confirm that you are authorized to accept these terms for that business.</p>
         <p>You must have legal capacity to enter into this agreement. If you do not agree with these terms, do not create an account or continue using the service.</p>
       </section>
 
@@ -68,19 +69,19 @@ export default function TermsPage() {
 
       <section>
         <h2>9. Deactivation and termination</h2>
-        <p>You may deactivate an account through available account settings. Deactivation removes active access but does not necessarily delete historical store, transaction, billing, or audit records. Privacy and deletion requests are handled under the <a href="/privacy">Privacy Policy</a> and applicable law.</p>
+        <p>You may deactivate an account through available account settings. Deactivation removes active access but does not necessarily delete historical store, transaction, billing, or audit records. Privacy and deletion requests are handled under the <Link href="/privacy">Privacy Policy</Link> and applicable law.</p>
         <p>We may terminate or restrict accounts that materially violate these terms, threaten the security of the service, or are used unlawfully.</p>
       </section>
 
       <section>
         <h2>10. Intellectual property</h2>
-        <p>Tindahan's software, visual design, branding, documentation, and original product content remain the property of their respective owner(s) and are protected by applicable intellectual-property laws. These terms give you a limited right to use the service; they do not transfer ownership of Tindahan itself.</p>
+        <p>Tindahan&apos;s software, visual design, branding, documentation, and original product content remain the property of their respective owner(s) and are protected by applicable intellectual-property laws. These terms give you a limited right to use the service; they do not transfer ownership of Tindahan itself.</p>
       </section>
 
       <section>
         <h2>11. Disclaimers and limits</h2>
         <p>Tindahan is a business-assistance tool, not a substitute for professional accounting, tax, legal, or regulatory advice. Reports and automated extraction depend on the data supplied to the service and may contain errors.</p>
-        <p>To the fullest extent permitted by Philippine law, Tindahan is provided without a guarantee that it will be uninterrupted or error-free. Tindahan is not responsible for indirect or consequential losses caused by inaccurate user-entered data, unreviewed OCR results, third-party outages, or unauthorized access resulting from a user's failure to protect account credentials.</p>
+        <p>To the fullest extent permitted by Philippine law, Tindahan is provided without a guarantee that it will be uninterrupted or error-free. Tindahan is not responsible for indirect or consequential losses caused by inaccurate user-entered data, unreviewed OCR results, third-party outages, or unauthorized access resulting from a user&apos;s failure to protect account credentials.</p>
         <p>Nothing in these terms excludes rights or liabilities that cannot lawfully be excluded.</p>
       </section>
 
