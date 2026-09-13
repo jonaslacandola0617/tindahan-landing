@@ -1,9 +1,12 @@
 import type { Metadata, Viewport } from "next";
+import { CookieNotice } from "@/components/cookie-notice";
+import { LegalBar } from "@/components/legal-bar";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL, isIndexableProduction } from "@/lib/site";
 import "./globals.css";
 import "./showcase.css";
 import "./usability.css";
 import "./responsive-header.css";
+import "./legal.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -79,6 +82,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c") }}
         />
         {children}
+        <LegalBar />
+        <CookieNotice />
       </body>
     </html>
   );
